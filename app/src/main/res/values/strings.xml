@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">NBATeams</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
+    <string name="title_team_list">Teams</string>
+    <string name="title_team_detail">Team Detail</string>
+    <string name="button">Button</string>
+    <string name="welcome">Welcome</string>
+    <string name="list">list</string>
 </resources>
