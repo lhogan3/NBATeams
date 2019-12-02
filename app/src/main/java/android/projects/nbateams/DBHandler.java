@@ -95,7 +95,9 @@ public class DBHandler extends SQLiteOpenHelper {
         return teams;
     }
 
+    //Find an item from an id.
     public Team findItem(int id){
+        //Change the id to a string.
         String idString = Integer.toString(id);
         Team teamToReturn = new Team();
         SQLiteDatabase db = getReadableDatabase();

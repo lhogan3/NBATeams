@@ -58,9 +58,16 @@ public class TeamDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.team_detail)).setText(mItem.get_arena());
+            ((TextView) rootView.findViewById(R.id.team_detail)).setText(createText(mItem));
         }
 
         return rootView;
+    }
+
+    public String createText(Team team){
+        String text = "\nArena: " + team.get_arena() + "\n\nNumber of Championships: " + team.get_champ() +
+                "\n\nTop Players:\n\n\t\t\t1.) " + team.get_player1() + "\n\t\t\t2.) " + team.get_player2() + "\n\t\t\t3.) " +
+                team.get_player3();
+        return text;
     }
 }

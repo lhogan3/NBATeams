@@ -7,4 +7,5 @@
     <string name="button">Button</string>
     <string name="welcome">Welcome</string>
     <string name="list">list</string>
+    <string name="team_name">Team Name:</string>
 </resources>

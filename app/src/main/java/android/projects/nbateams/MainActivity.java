@@ -14,17 +14,11 @@ package android.projects.nbateams;
         import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
-    DBHandler dbHandler;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setTitle(getTitle());
 
         Button list = (Button) findViewById(R.id.list);
         list.setOnClickListener(new View.OnClickListener() {
@@ -34,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 view.getContext().startActivity(intent);
             }
         });
-
-        dbHandler = new DBHandler(this, null, null, 1);
-        //printDatabase();
     }
 
 //    //Add a team to the database
