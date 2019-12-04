@@ -37,6 +37,7 @@ public class TeamListActivity extends AppCompatActivity {
     public static DBHandler dbHandler;
     public static List<Team> teams;
     public static final String idString = "itemID";
+    public static boolean makeNewDb = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,10 @@ public class TeamListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team_list);
 
         //Creating the database instantiation.
-        dbHandler = new DBHandler(this, null, null, 1);
+        if(makeNewDb){
+            dbHandler = new DBHandler(this, null, null, 1);
+            makeNewDb = false;
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -73,7 +77,6 @@ public class TeamListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        dbHandler.addTeam(new Team(0, "Boston Celtics", "Arena", "12", "asdf", "asdf", "asdf"));
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, dbHandler.getDatabaseList(), mTwoPane));
         teams = dbHandler.getDatabaseList();
         System.out.println(teams);
@@ -101,7 +104,6 @@ public class TeamListActivity extends AppCompatActivity {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, TeamDetailActivity.class);
                     intent.putExtra(idString, Integer.toString(item.get_id()));
-
                     context.startActivity(intent);
                 }
             }

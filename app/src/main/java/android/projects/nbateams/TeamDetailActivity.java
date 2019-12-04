@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -14,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import static android.projects.nbateams.TeamListActivity.dbHandler;
 
 /**
  * An activity representing a single Team detail screen. This
@@ -29,13 +31,24 @@ public class TeamDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.delete);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton edit = findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Bundle editBundle = new Bundle();
+                editBundle.putString("teamName", dbHandler.findItemByID(Integer.valueOf(getIntent().getStringExtra(TeamListActivity.idString))).get_team());
+                Intent intent = new Intent(view.getContext(), EditTeamActivity.class);
+                intent.putExtras(editBundle);
+                startActivity(intent);
+            }
+        });
+        FloatingActionButton delete = findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbHandler.deleteTeam(dbHandler.findItemByID(Integer.valueOf(getIntent().getStringExtra(TeamListActivity.idString))).get_team());
+                Intent intent = new Intent(view.getContext(), TeamListActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 

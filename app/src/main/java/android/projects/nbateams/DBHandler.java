@@ -67,8 +67,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //Delete a row (team) from the database.
     public void deleteTeam(String team){
+        System.out.println("BEFORE DELETE: ");
+        getDatabaseList();
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_TEAMS + " WHERE " + COLUMN_TEAM + "=\"" + team + "\";" );
+        System.out.println("AFTER DELETE: ");
+        getDatabaseList();
         db.close();
     }
 
@@ -91,12 +95,15 @@ public class DBHandler extends SQLiteOpenHelper {
             }
             c.moveToNext();
         }
+        for (Team t: teams) {
+            System.out.println("HELP HELP HELP: " + t.get_team());
+        }
         db.close();
         return teams;
     }
 
     //Find an item from an id.
-    public Team findItem(int id){
+    public Team findItemByID(int id){
         //Change the id to a string.
         String idString = Integer.toString(id);
         Team teamToReturn = new Team();
@@ -107,6 +114,30 @@ public class DBHandler extends SQLiteOpenHelper {
 
         while(!c.isAfterLast()){
             if(c.getString(c.getColumnIndex(COLUMN_ID)).equals(idString)){
+                teamToReturn.set_id(Integer.valueOf(c.getString(c.getColumnIndex(COLUMN_ID))));
+                teamToReturn.set_team(c.getString(c.getColumnIndex(COLUMN_TEAM)));
+                teamToReturn.set_arena(c.getString(c.getColumnIndex(COLUMN_ARENA)));
+                teamToReturn.set_champ(c.getString(c.getColumnIndex(COLUMN_CHAMP)));
+                teamToReturn.set_player1(c.getString(c.getColumnIndex(COLUMN_PLAYER1)));
+                teamToReturn.set_player2(c.getString(c.getColumnIndex(COLUMN_PLAYER2)));
+                teamToReturn.set_player3(c.getString(c.getColumnIndex(COLUMN_PLAYER3)));
+            }
+            c.moveToNext();
+        }
+        db.close();
+        return teamToReturn;
+    }
+
+    public Team findItemByName(String name){
+        //Change the id to a string.
+        Team teamToReturn = new Team();
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_TEAMS + " WHERE " + COLUMN_TEAM + "=\"" + name + "\";";
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+
+        while(!c.isAfterLast()){
+            if(c.getString(c.getColumnIndex(COLUMN_TEAM)).equals(name)){
                 teamToReturn.set_id(Integer.valueOf(c.getString(c.getColumnIndex(COLUMN_ID))));
                 teamToReturn.set_team(c.getString(c.getColumnIndex(COLUMN_TEAM)));
                 teamToReturn.set_arena(c.getString(c.getColumnIndex(COLUMN_ARENA)));

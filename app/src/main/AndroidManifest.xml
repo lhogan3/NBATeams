@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddTeamActivity"></activity>
+        <activity android:name=".EditTeamActivity"></activity>
+        <activity android:name=".AddTeamActivity" />
         <activity
             android:name=".TeamListActivity"
             android:label="@string/title_team_list"
