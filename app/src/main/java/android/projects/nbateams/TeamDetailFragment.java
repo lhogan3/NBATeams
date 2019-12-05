@@ -14,33 +14,17 @@ import android.widget.TextView;
 
 import static android.projects.nbateams.TeamListActivity.dbHandler;
 
-/**
- * A fragment representing a single Team detail screen.
- * This fragment is either contained in a {@link TeamListActivity}
- * in two-pane mode (on tablets) or a {@link TeamDetailActivity}
- * on handsets.
- */
-public class TeamDetailFragment extends Fragment {
-    /**
-     * The dummy content this fragment is presenting.
-     */
-    private Team mItem;
-    //private DBHandler dbHandler;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+public class TeamDetailFragment extends Fragment {
+
+    private Team mItem;
+
     public TeamDetailFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-
             if(getArguments().containsKey(TeamListActivity.idString)){
                 int id = Integer.valueOf(getArguments().getString(TeamListActivity.idString));
                 mItem = dbHandler.findItemByID(id);

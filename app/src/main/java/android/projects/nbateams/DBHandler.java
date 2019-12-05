@@ -5,11 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.drm.DrmStore;
 
 import androidx.annotation.Nullable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,9 +92,6 @@ public class DBHandler extends SQLiteOpenHelper {
                         c.getString(c.getColumnIndex(COLUMN_PLAYER3))));
             }
             c.moveToNext();
-        }
-        for (Team t: teams) {
-            System.out.println("HELP HELP HELP: " + t.get_team());
         }
         db.close();
         return teams;

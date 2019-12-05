@@ -27,12 +27,12 @@ public class AddTeamActivity extends AppCompatActivity {
         setTitle("Add New Team");
 
         //Defining the text inputs for each field.
-        teamInput = (EditText) findViewById(R.id.teamInput);
-        arenaInput = (EditText) findViewById(R.id.arenaInput);
-        champInput = (EditText) findViewById(R.id.champInput);
-        player1Input = (EditText) findViewById(R.id.player1Input);
-        player2Input = (EditText) findViewById(R.id.player2Input);
-        player3Input = (EditText) findViewById(R.id.player3Input);
+        teamInput = findViewById(R.id.teamInput);
+        arenaInput = findViewById(R.id.arenaInput);
+        champInput = findViewById(R.id.champInput);
+        player1Input = findViewById(R.id.player1Input);
+        player2Input = findViewById(R.id.player2Input);
+        player3Input = findViewById(R.id.player3Input);
 
         //Submit Button
         Button submit = (Button) findViewById(R.id.submit);
@@ -46,7 +46,7 @@ public class AddTeamActivity extends AppCompatActivity {
                     Intent intent = new Intent(view.getContext(), TeamListActivity.class);
                     view.getContext().startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Please fill out all fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please fill out all fields, or enter a new team.", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -54,7 +54,7 @@ public class AddTeamActivity extends AppCompatActivity {
         });
 
         //Clear Inputs Button
-        Button clear = (Button) findViewById(R.id.clear);
+        Button clear = findViewById(R.id.clear);
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

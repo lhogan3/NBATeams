@@ -2,7 +2,6 @@ package android.projects.nbateams;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,13 +24,14 @@ public class EditTeamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_team);
+        setTitle("Edit Team");
 
-        teamInput = (EditText) findViewById(R.id.teamInput);
-        arenaInput = (EditText) findViewById(R.id.arenaInput);
-        champInput = (EditText) findViewById(R.id.champInput);
-        player1Input = (EditText) findViewById(R.id.player1Input);
-        player2Input = (EditText) findViewById(R.id.player2Input);
-        player3Input = (EditText) findViewById(R.id.player3Input);
+        teamInput = findViewById(R.id.teamInput);
+        arenaInput = findViewById(R.id.arenaInput);
+        champInput = findViewById(R.id.champInput);
+        player1Input = findViewById(R.id.player1Input);
+        player2Input = findViewById(R.id.player2Input);
+        player3Input = findViewById(R.id.player3Input);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
@@ -59,10 +59,9 @@ public class EditTeamActivity extends AppCompatActivity {
                             champInput.getText().toString(), player1Input.getText().toString(), player2Input.getText().toString(),
                             player3Input.getText().toString());
                     dbHandler.addTeam(tempTeam);
-                    //Team tempTeam = dbHandler.findItemByName(teamInput.getText().toString());
-                    //Context context = view.getContext();
+
                     Intent intent = new Intent(view.getContext(), TeamListActivity.class);
-                    //intent.putExtra("teamID", Integer.toString(tempTeam.get_id()));
+
                     view.getContext().startActivity(intent);
                 }
 

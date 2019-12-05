@@ -19,20 +19,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * An activity representing a list of Teams. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link TeamDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
+
 public class TeamListActivity extends AppCompatActivity {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private boolean mTwoPane;
     public static DBHandler dbHandler;
     public static List<Team> teams;
@@ -49,12 +38,12 @@ public class TeamListActivity extends AppCompatActivity {
             dbHandler = new DBHandler(this, null, null, 1);
             makeNewDb = false;
         }
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.delete);
+        FloatingActionButton fab = findViewById(R.id.delete);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,10 +53,6 @@ public class TeamListActivity extends AppCompatActivity {
         });
 
         if (findViewById(R.id.team_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
             mTwoPane = true;
         }
 
@@ -145,8 +130,8 @@ public class TeamListActivity extends AppCompatActivity {
 
             ViewHolder(View view) {
                 super(view);
-                mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id_text);
+                mContentView = view.findViewById(R.id.content);
             }
         }
     }
