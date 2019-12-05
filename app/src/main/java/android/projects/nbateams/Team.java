@@ -1,6 +1,9 @@
 package android.projects.nbateams;
 
+//Defining the Team class
 public class Team {
+
+    //Declaring the fields for a team.
     private int _id;
     private String _team;
     private String _arena;
@@ -9,6 +12,7 @@ public class Team {
     private String _player2;
     private String _player3;
 
+    //Default constructor
     public Team() {
     }
 
@@ -23,7 +27,6 @@ public class Team {
     }
 
     //For creating the list of team objects to be displayed.
-
     public Team(int _id, String _team, String _arena, String _champ, String _player1, String _player2, String _player3) {
         this._id = _id;
         this._team = _team;
@@ -34,9 +37,8 @@ public class Team {
         this._player3 = _player3;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
-    }
+    //Setters for all fields.
+    public void set_id(int _id){this._id = _id;}
 
     public void set_team(String _team) {
         this._team = _team;
@@ -62,6 +64,7 @@ public class Team {
         this._player3 = _player3;
     }
 
+    //Getters for all fields.
     public int get_id() {
         return _id;
     }
